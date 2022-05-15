@@ -19,3 +19,4 @@ dotnet build
 cd RNAqbase/ClientApp
 ng build --prod
 ```
+
