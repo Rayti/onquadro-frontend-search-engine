@@ -64,7 +64,7 @@ namespace RNAqbase.Models.Search
                 {
                     query += ") AND ";
                 }
-                query = $"({FieldInSQL} NOT IN ('{authorLike[0].Value}'";
+                query = $"({FieldInSQL} IN ('{authorLike[0].Value}'";
                 for (int i = 1; i < authorLike.Count; i++)
                 {
                     query += $", \"'{authorLike[i].Value}'\"";
