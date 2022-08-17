@@ -5,40 +5,21 @@ using System.Threading.Tasks;
 
 namespace RNAqbase.Models.Search
 {
-    public class AuthorFilter
+    public class AuthorFilter : Filter
     {
-        private readonly string _fieldInSQL;
-
+        public new readonly string FieldInSQL = "Author";
+        public override List<Condition> Conditions { get; set; } = new List<Condition>();
+        
         public AuthorFilter()
         {
-            _fieldInSQL = "whatever"; // TODD from SQL
-        }
+            Conditions.Add(new Condition("=", "A"));
+            Conditions.Add(new Condition("!=", "B"));
+            Conditions.Add(new Condition("=", "C"));
+            Conditions.Add(new Condition("=", "D"));
+            Conditions.Add(new Condition("!=", "E"));
+         }
 
-        public List<Condition> Conditions
-        {
-            get
-            {
-                return Conditions;
-            }
-            set
-            {
-                Conditions.Add(new Condition("=", "A"));
-                Conditions.Add(new Condition("!=", "B"));
-                Conditions.Add(new Condition("=", "C"));
-                Conditions.Add(new Condition("=", "D"));
-                Conditions.Add(new Condition("!=", "E"));
-            }
-        }
-
-        public string FieldInSQL
-        {
-            get
-            {
-                return _fieldInSQL;
-            }
-        }
-
-        public string JoinConditions()
+        public override string JoinConditions()
         {
             if (Conditions.Count == 0)
             {
@@ -54,7 +35,7 @@ namespace RNAqbase.Models.Search
                 query += $"{FieldInSQL} NOT IN ('{authorNotLike[0].Value}'";
                 for (int i = 1; i < authorNotLike.Count; i++)
                 {
-                    query += $", \"'{authorNotLike[i].Value}'\"";
+                    query += $", '{authorNotLike[i].Value}'";
                 }
             }
 
