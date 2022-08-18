@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RNAqbase.Models.Search
 {
-    public class V_LoppsFilter : Filter
+    public class V_LoopsFilter : Filter
     {
         public override List<Condition> Conditions { get; set; } = new List<Condition>();
 
