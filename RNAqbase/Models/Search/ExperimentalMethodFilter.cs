@@ -7,9 +7,12 @@ namespace RNAqbase.Models.Search
 {
     public class ExperimentalMethodFilter : Filter
     {
-        public override List<Condition> Conditions { get; set; } = new List<Condition>();
+        public ExperimentalMethodFilter() 
+        {
+            FieldInSQL = "experiment";
+        }
 
-        public new readonly string FieldInSQL = "experiment";
+        public override List<Condition> Conditions { get; set; } = new List<Condition>();
 
         public override string JoinConditions()
         {
