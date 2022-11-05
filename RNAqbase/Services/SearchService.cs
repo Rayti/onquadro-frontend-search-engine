@@ -83,7 +83,6 @@ LEFT JOIN ion ON ion.id = pdb_ion.ion_id
             }
 
             string query = $"{querySB.ToString()}GROUP BY q.id HAVING (COUNT(t.id) > 1){queryToHavingSB.ToString()};";
-
             return await searchRepository.GetAllResults(query);
         }
 
@@ -92,5 +91,8 @@ LEFT JOIN ion ON ion.id = pdb_ion.ion_id
 
         public async Task<List<string>> GetONZ() =>
             await searchRepository.GetONZ();
+
+        public async Task<List<string>> GetMoleculeType() =>
+            await searchRepository.GetMoleculeType();
     }
 }
