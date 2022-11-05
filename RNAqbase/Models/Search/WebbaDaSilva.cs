@@ -9,7 +9,7 @@ namespace RNAqbase.Models.Search
     {
         public WebbaDaSilva()
         {
-            FieldInSQL = "";
+            FieldInSQL = "loop_progression";
         }
 
         public override List<Condition> Conditions { get; set; } = new List<Condition>();
