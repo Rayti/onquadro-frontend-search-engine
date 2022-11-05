@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 namespace RNAqbase.Models.Search
 {
     public class AuthorFilter : Filter
-    {
-        public new readonly string FieldInSQL = "Author";
-        public override List<Condition> Conditions { get; set; } = new List<Condition>();
-        
+    {        
         public AuthorFilter()
         {
-            Conditions.Add(new Condition("=", "A"));
-            Conditions.Add(new Condition("!=", "B"));
-            Conditions.Add(new Condition("=", "C"));
-            Conditions.Add(new Condition("=", "D"));
-            Conditions.Add(new Condition("!=", "E"));
-         }
-
+            FieldInSQL = "name";
+        }
+        public override List<Condition> Conditions { get; set; } = new List<Condition>();
         public override string JoinConditions()
         {
             if (Conditions.Count == 0)
