@@ -2,6 +2,9 @@ import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import panzoom from "panzoom";
+import { HttpClient } from '@angular/common/http';
+import { saveAs } from "file-saver";
+import { generateAsync } from 'jszip';
 
 @Component({
   selector: 'app-visualization-dialog',
@@ -15,6 +18,7 @@ export class VisualizationDialogComponent implements OnInit {
   width = 'auto';
   public svgPic: any;
   svg: SafeHtml;
+  photo;
 
   @ViewChild('dataContainer') dataContainer: ElementRef;
   @ViewChild('scene', {}) scene: ElementRef;
@@ -24,7 +28,7 @@ export class VisualizationDialogComponent implements OnInit {
   currentZoomLevel: number;
 
   constructor(
-    public dialogRef: MatDialogRef<VisualizationDialogComponent>,
+    public dialogRef: MatDialogRef<VisualizationDialogComponent>, private http: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public sanitizer: DomSanitizer) {
   }
 
@@ -80,6 +84,19 @@ export class VisualizationDialogComponent implements OnInit {
     this.zoomLevels = [0.1, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.5, 3];
     this.currentZoomLevel = this.zoomLevels[4];
     this.panZoomController = panzoom(this.scene.nativeElement);
+
+  }
+  downloadPhoto(): void {
+    this.http.get("/static/" + this.data.type + "/" + this.data.id + ".svg", { responseType: "arraybuffer" })
+      .subscribe(data => {
+        this.photo = data;
+        const input = document.getElementById("name") as HTMLInputElement;
+        let value = input.value;
+        if (value == "") {
+          value = this.data.id;
+        } 
+        saveAs(this.photo, value);
+      })
   }
 }
 
