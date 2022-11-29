@@ -95,7 +95,7 @@ export class VisualizationDialogComponent implements OnInit {
         if (value == "") {
           value = this.data.id;
         } 
-        saveAs(this.photo, value);
+        saveAs(this.photo, value + ".svg");
       })
   }
 }
