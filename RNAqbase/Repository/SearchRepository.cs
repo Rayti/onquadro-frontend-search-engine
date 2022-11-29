@@ -55,7 +55,7 @@ namespace RNAqbase.Repository
             using (var connection = Connection)
             {
                 connection.Open();
-                return (await connection.QueryAsync<string>("SELECT DISTINCT loop_class FROM quadruplex;")).ToList();
+                return (await connection.QueryAsync<string>("SELECT DISTINCT loop_progression FROM quadruplex;")).ToList();
             }
         }
     }
