@@ -59,7 +59,7 @@ export class TetradTabelComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-  const filterValue = (event.target as HTMLInputElement).value;
+    const filterValue = (event.target as HTMLInputElement).value;
     this.refreshTable(filterValue);
   }
 
