@@ -11,11 +11,18 @@ namespace RNAqbase.Services
 	{
 		private readonly IStatisticsRepository statisticsRepository;
 		private readonly IMemoryCache cache;
+		private static DateTime dateTimeNow = DateTime.Now;
 
 		private static readonly MemoryCacheEntryOptions Cache = new MemoryCacheEntryOptions
 		{
-			AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(12)
-		};
+			AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(12),
+            AbsoluteExpiration = dateTimeNow
+                .AddDays((((int)DayOfWeek.Thursday - (int)dateTimeNow.DayOfWeek + 7) % 7) + 1)
+                .AddHours(dateTimeNow.Hour * -1)
+                .AddMinutes(dateTimeNow.Minute * -1)
+                .AddSeconds(dateTimeNow.Second * -1)
+
+        };
 
 		public StatisticsService(IStatisticsRepository statisticsRepository, IMemoryCache cache)
 		{
@@ -29,6 +36,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetTopologyBaseTetradViewTableOne();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetTopologyBaseTetradViewTableOne), result, Cache);
 			}
 
@@ -41,6 +49,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetTopologyBaseQuadruplexViewTableTwo();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetTopologyBaseQuadruplexViewTableTwo), result, Cache);
 			}
 
@@ -53,6 +62,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetTopologyBaseQuadruplexViewTableThere();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetTopologyBaseQuadruplexViewTableThere), result, Cache);
 			}
 
@@ -65,6 +75,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetElTetradoTetradViewTableOne();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetElTetradoTetradViewTableOne), result, Cache);
 			}
 
@@ -77,6 +88,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetElTetradoQuadruplexViewTableTwo();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetElTetradoQuadruplexViewTableTwo), result, Cache);
 			}
 
@@ -89,6 +101,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetElTetradoQuadruplexViewTableThereA();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetElTetradoQuadruplexViewTableThereA), result, Cache);
 			}
 
@@ -101,6 +114,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetElTetradoQuadruplexViewTableThereB();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetElTetradoQuadruplexViewTableThereB), result, Cache);
 			}
 
@@ -113,6 +127,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetCountOfComponents();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetCountOfComponents), result, Cache);
 			}
 
@@ -124,6 +139,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.GetUpdateInformations();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(GetUpdateInformations), result, Cache);
 			}
 
@@ -136,6 +152,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.ion_distribution_o_plus();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(ion_distribution_o_plus), result, Cache);
 			}
 
@@ -148,6 +165,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.ion_distribution_o_minus();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(ion_distribution_o_minus), result, Cache);
 			}
 
@@ -160,6 +178,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.ion_distribution_n_plus();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(ion_distribution_n_plus), result, Cache);
 			}
 
@@ -172,6 +191,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.ion_distribution_n_minus();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(ion_distribution_n_minus), result, Cache);
 			}
 
@@ -184,6 +204,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.ion_distribution_z_plus();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(ion_distribution_z_plus), result, Cache);
 			}
 
@@ -196,6 +217,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.ion_distribution_z_minus();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(ion_distribution_z_minus), result, Cache);
 			}
 			return result;
@@ -206,6 +228,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.gba_da_silva();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(gba_da_silva), result, Cache);
 			}
 			return result;
@@ -216,6 +239,7 @@ namespace RNAqbase.Services
 			{
 				result = await statisticsRepository.loop_da_silva();
 
+				dateTimeNow = DateTime.Now;
 				cache.Set(nameof(loop_da_silva), result, Cache);
 			}
 			return result;
