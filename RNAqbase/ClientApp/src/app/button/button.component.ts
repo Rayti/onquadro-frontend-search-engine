@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -18,6 +18,7 @@ export class ButtonComponent {
     getResults() {
       this.http.post('http://localhost:5000/api/Search/PostAndGetResults',
         `[
+        {"Attribute": "Loop Length", "Conditions": [{ "Value": "1", "Operator": ">=" }, { "Value": "6", "Operator": "<=" }]},
         {"Attribute": "Experimental Method", "Conditions": [{ "Value": "X-Ray", "Operator": "" }]},
         {"Attribute": "ONZ class", "Conditions": [{ "Value": "N-", "Operator": "" }, { "Value": "Z-", "Operator": "" }]},
         {"Attribute": "PDB ID", "Conditions": [{ "Value": "10", "Operator": "" }]},
