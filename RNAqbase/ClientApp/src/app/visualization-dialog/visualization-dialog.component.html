@@ -2,8 +2,11 @@
   <div style="margin-bottom: 50px">
     <ul>
       <li style="float:right">
-        <input value="{{id}}" id="name">
-        <a style="float: right;  border: 1px solid #000;" class="btn" (click)="downloadPhoto()">Download image</a>
+        <div>
+          Name: 
+          <input style="margin:auto" value="{{id}}" id="name">
+        </div>
+        <a style="float: right;  border: 1px solid #000; margin: 5px 0px 0px 0px" class="btn" (click)="downloadPhoto()">Download image</a>
       </li>
     </ul>
   </div>

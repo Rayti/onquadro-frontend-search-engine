@@ -18,7 +18,7 @@ export class VisualizationDialogComponent implements OnInit {
   width = 'auto';
   public svgPic: any;
   svg: SafeHtml;
-  photo;
+  photo: any;
 
   @ViewChild('dataContainer') dataContainer: ElementRef;
   @ViewChild('scene', {}) scene: ElementRef;
@@ -89,13 +89,15 @@ export class VisualizationDialogComponent implements OnInit {
   downloadPhoto(): void {
     this.http.get("/static/" + this.data.type + "/" + this.data.id + ".svg", { responseType: "arraybuffer" })
       .subscribe(data => {
+
         this.photo = data;
         const input = document.getElementById("name") as HTMLInputElement;
         let value = input.value;
         if (value == "") {
           value = this.data.id;
         } 
-        saveAs(this.photo, value + ".svg");
+        let blob = new Blob([this.photo]);
+        saveAs(blob, value + ".svg");
       })
   }
 }
