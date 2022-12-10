@@ -4,7 +4,6 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import panzoom from "panzoom";
 import { HttpClient } from '@angular/common/http';
 import { saveAs } from "file-saver";
-import { generateAsync } from 'jszip';
 
 @Component({
   selector: 'app-visualization-dialog',
