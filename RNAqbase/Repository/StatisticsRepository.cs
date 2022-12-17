@@ -442,7 +442,7 @@ WHERE chains = 4;")).ToList();
 				connection.Open();
 
 				return (await connection.QueryAsync<Statistics>(
-					@"SELECT DISTINCT experiment, COUNT(*) FROM PDB GROUP BY experiment;")).ToList();
+					@"SELECT DISTINCT experiment AS experimental_method, COUNT(*) as Total FROM PDB GROUP BY experiment;")).ToList();
 			}
 		}
 		public async Task<List<Statistics>> loop_progression_da_silva()
@@ -453,7 +453,7 @@ WHERE chains = 4;")).ToList();
 				connection.Open();
 
 				return (await connection.QueryAsync<Statistics>(
-					@"SELECT DISTINCT q.loop_progression, COUNT(*) 
+					@"SELECT DISTINCT q.loop_progression, COUNT(*) as Total
 							FROM tetrad t
 							JOIN quadruplex q on q.id = t.quadruplex_id
 							WHERE q.loop_progression IS NOT NULL
@@ -471,8 +471,8 @@ WHERE chains = 4;")).ToList();
 					@"SELECT DISTINCT CASE 
 							WHEN SUBSTRING(onzm::TEXT, 2, 1) = 'a' THEN 'antiparallel'
 							WHEN SUBSTRING(onzm::TEXT, 2, 1) = 'p' THEN 'parallel'
-							ELSE 'hybrid' END,
-							COUNT(*) FROM quadruplex GROUP BY SUBSTRING(onzm::TEXT, 2, 1);")).ToList();
+							ELSE 'hybrid' END AS onzm,
+							COUNT(*) as Total FROM quadruplex GROUP BY SUBSTRING(onzm::TEXT, 2, 1);")).ToList();
 			}
 		}
 	}
