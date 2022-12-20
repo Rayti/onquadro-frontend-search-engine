@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RNAqbase.Models.Search
@@ -20,14 +21,12 @@ namespace RNAqbase.Models.Search
             {
                 return "";
             }
-
-            string query = $"({FieldInSQL} IN ('{Conditions[0].Value}'";
+            StringBuilder querySB = new StringBuilder($"({FieldInSQL} IN ('{Conditions[0].Value}'");
             for (int i = 1; i < Conditions.Count; i++)
             {
-                query += $", '{Conditions[i].Value}'";
+                querySB.Append($", '{Conditions[i].Value}'");
             }
-
-            return query + "))";
+            return querySB.ToString() + "))";
         }
     }
 }

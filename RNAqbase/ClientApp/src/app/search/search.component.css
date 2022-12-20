@@ -23,167 +23,10 @@ main {
   border-radius: 15px 15px 15px 15px;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-}
-
-  .header > div {
-    font-size: 18px;
-    font-weight: bold;
-    color: #45A29E;
-    font-family: 'Inter', sans-serif;
-  }
-
 .search-container {
   margin-left: 80px;
   margin-right: 80px;
 }
-
-.icon {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.mat-icon-button {
-  outline: none;
-  background-color: rgba(196, 196, 196, 1);
-  font-size: 14px;
-  font-weight: bold;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-}
-
-.unclickableCond {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  background-color: rgba(184, 224, 222, 0.4);
-  border-radius: 15px 15px 15px 15px;
-  margin-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-  .unclickableCond > div {
-    width: fit-content;
-    height: fit-content;
-    padding: 8px;
-  }
-
-.clickableCond {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  background-color: rgba(184, 224, 222, 0.4);
-  border-radius: 15px 15px 15px 15px;
-  margin-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  cursor: pointer;
-}
-
-  .clickableCond > div {
-    width: fit-content;
-    height: fit-content;
-    padding: 8px;
-  }
-
-.operatorCondHorizontal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  padding: 5px;
-}
-
-  .operatorCondHorizontal > .conditionContent {
-    width: 100%;
-    height: fit-content;
-    text-align: center;
-    background-color: rgba(184, 224, 222, 0.4);
-    border-radius: 0px 0px 10px 10px;
-    padding: 4px;
-  }
-
-  .operatorCondHorizontal > .operatorContent {
-    padding: 5px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 100%;
-    text-align: center;
-    background-color: rgba(72, 173, 169, 0.75);
-    border-radius: 10px 10px 0px 0px;
-    height: fit-content;
-    color: white;
-  }
-
-.operatorCondVertical {
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  height: fit-content;
-  padding: 5px;
-}
-
-  .operatorCondVertical > .conditionContent {
-    width: fit-content;
-    height: fit-content;
-    background-color: rgba(184, 224, 222, 0.4);
-    border-radius: 0px 10px 10px 0px;
-    padding: 8px;
-    margin-right: 4px;
-  }
-
-  .operatorCondVertical > .operatorContent {
-    padding: 5px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    width: fit-content;
-    background-color: rgba(72, 173, 169, 0.75);
-    border-radius: 10px 0px 0px 10px;
-    height: 100%;
-    color: white;
-  }
-
-
-.attrLabel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: fit-content;
-  background-color: rgba(82, 183, 179, 0.3);
-  border-radius: 10px 10px 10px 10px;
-}
-
-  .attrLabel > div {
-    width: fit-content;
-    height: fit-content;
-    padding: 6px;
-  }
-
-.itemsAddable > div {
-  color: white;
-  font-weight: 500;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  height: 25px;
-  width: 25px;
-  background-color: rgba(72, 173, 169, 1);
-  border-radius: 6px 6px 6px 6px;
-  cursor: pointer;
-}
-
 
 .mat-header-cell {
   font-size: 18px;
@@ -200,16 +43,14 @@ main {
   justify-content: center;
   text-align: center;
   flex: 0 0 20%;
-  padding-left: 5px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
 }
 
 .mat-column-conditions {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 15px;
+  padding-left: 5px;
+  padding-right: 10px;
   align-self: stretch;
   border-left: 1px solid;
   border-color: rgba(85, 180, 176, 1);
@@ -232,22 +73,7 @@ main {
   margin-bottom: 10px;
 }
 
-.buttonReset, .buttonSearch {
-  padding: 12px;
+.mat-header-cell {
+  padding-left: 10px;
+  padding-right: 10px;
 }
-
-  .buttonReset > .mat-flat-button {
-    outline: none;
-    background-color: rgba(196, 196, 196, 1);
-    width: 120px;
-    border-radius: 12px 12px 12px 12px;
-    color: rgba(81, 80, 80, 1);
-  }
-
-
-  .buttonSearch > .mat-flat-button {
-    outline: none;
-    background-color: rgba(72, 173, 169, 1);
-    width: 120px;
-    border-radius: 12px 12px 12px 12px;
-  }
