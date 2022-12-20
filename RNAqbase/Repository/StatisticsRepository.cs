@@ -16,7 +16,6 @@ namespace RNAqbase.Repository
 
 		public async Task<List<Statistics>> GetTopologyBaseTetradViewTableOne()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -46,7 +45,6 @@ namespace RNAqbase.Repository
 
 		public async Task<List<Statistics>> GetTopologyBaseQuadruplexViewTableTwo()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -72,7 +70,6 @@ namespace RNAqbase.Repository
 
 		public async Task<List<Statistics>> GetTopologyBaseQuadruplexViewTableThere()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -98,7 +95,6 @@ namespace RNAqbase.Repository
 
 		public async Task<List<Statistics>> GetElTetradoTetradViewTableOne()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -128,7 +124,6 @@ WHERE qv.count > 1;")).ToList();
 
 		public async Task<List<Statistics>> GetElTetradoQuadruplexViewTableTwo()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -156,7 +151,6 @@ WHERE chains = 1;")).ToList();
 
 		public async Task<List<Statistics>> GetElTetradoQuadruplexViewTableThereA()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -184,7 +178,6 @@ WHERE chains = 2;")).ToList();
 
 		public async Task<List<Statistics>> GetElTetradoQuadruplexViewTableThereB()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -213,8 +206,7 @@ WHERE chains = 4;")).ToList();
 		
 		public async Task<HomePagePlot> GetCountOfComponents()
 		{
-
-			using (SshClient)
+			
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -237,7 +229,6 @@ WHERE chains = 4;")).ToList();
 		
 		public async Task<HomePagePlot> GetUpdateInformations()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -252,7 +243,7 @@ WHERE chains = 4;")).ToList();
 						left join quadruplex_growth_view q  on t.release_date = q.release_date
 						left join helix_growth_view h on t.release_date = h.release_date
 						left join structure_growth_view s on t.release_date = s.release_date
-						WHERE t.release_date = (select release_date from tetrad_growth_view order by release_date desc limit 1)
+						WHERE t.release_date = (select max(release_date) from tetrad_growth_view)
 						"));
 				
 			}
@@ -260,7 +251,6 @@ WHERE chains = 4;")).ToList();
 		
 		public async Task<List<Statistics>> ion_distribution_o_plus()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -282,7 +272,6 @@ WHERE chains = 4;")).ToList();
 		}
 		public async Task<List<Statistics>> ion_distribution_o_minus()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -304,7 +293,6 @@ WHERE chains = 4;")).ToList();
 		}
 		public async Task<List<Statistics>> ion_distribution_n_plus()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -327,7 +315,6 @@ WHERE chains = 4;")).ToList();
 		
 		public async Task<List<Statistics>> ion_distribution_n_minus()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -350,7 +337,6 @@ WHERE chains = 4;")).ToList();
 		
 		public async Task<List<Statistics>> ion_distribution_z_plus()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -372,7 +358,6 @@ WHERE chains = 4;")).ToList();
 		}
 		public async Task<List<Statistics>> ion_distribution_z_minus()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -395,7 +380,6 @@ WHERE chains = 4;")).ToList();
 
 		public async Task<List<Statistics>> gba_da_silva()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();
@@ -412,7 +396,6 @@ WHERE chains = 4;")).ToList();
 		}
 		public async Task<List<Statistics>> loop_da_silva()
 		{
-			using (SshClient)
 			using (var connection = Connection)
 			{
 				connection.Open();

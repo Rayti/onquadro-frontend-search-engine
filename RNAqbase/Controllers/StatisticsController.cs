@@ -151,6 +151,5 @@ namespace RNAqbase.Controllers
 			var a = await statisticsService.onzm();
 			return Ok(a);
 		}
-
 	}
 }
