@@ -22,6 +22,5 @@
 		public string loop_class { get; set; }
 		public string loop_progression_da_silva { get; set; }
 		public string experimental_method { get; set; }
-
 	}
 }
