@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,13 @@ namespace RNAqbase.Repository
         {
         }
 
-        public async Task<List<QuadruplexTable>> GetAllResults(string query)
+        public async Task<List<QuadruplexTable>> GetAllResults(string query, Dictionary<string, object> parameters)
         {
             using (SshClient)
             using (var connection = Connection)
             {
                 connection.Open();
-                return (await connection.QueryAsync<QuadruplexTable>(query)).ToList();
+                return (await connection.QueryAsync<QuadruplexTable>(query, parameters)).ToList();
             }
 		}
 
