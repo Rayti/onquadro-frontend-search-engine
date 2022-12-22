@@ -31,7 +31,7 @@ export class RowCondNonaddableComponent implements OnInit {
     });
     this.rowData = this.rowElements;
     for (let i of this.rowData.conditions) {
-      this.rowElementsStatus[i.condition] = false;
+      this.rowElementsStatus[i.value] = false;
     }
   }
 
