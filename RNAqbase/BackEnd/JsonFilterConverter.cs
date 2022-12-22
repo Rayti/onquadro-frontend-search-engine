@@ -12,28 +12,40 @@ namespace RNAqbase.BackEnd
     {
         protected override Filter Create(Type objectType, JObject jObject)
         {
-            switch (jObject["Attribute"].ToString())
+            switch (jObject["attrID"].ToString())
             {
-                case "Experimental Method":
-                    return new ExperimentalMethodFilter();
-                case "ONZ class":
-                    return new ONZFilter();
-                case "PDB ID":
+                case "pdbID":
                     return new PDBIDFilter();
-                case "Number of tetrads":
-                    return new NoTetradsFilter();
-                case "Type (by no. of strands)":
-                    return new TypeFilter();
-                case "Molecule Type":
-                    return new MoleculeTypeFilter();
-                case "PDB Deposition":
+                case "authorName":
+                    return null;
+                case "pdbDeposition":
                     return new PDBDepositionFilter();
-                case "Bulges":
-                    return new BulgesFilter();
-                case "Loop Length":
+                case "keyword":
+                    return null;
+                case "expMethod":
+                    return new ExperimentalMethodFilter();
+                case "molType":
+                    return new MoleculeTypeFilter();
+                case "sequence":
+                    return null;
+                case "ions":
+                    return null;
+                case "typeNoStrands":
+                    return new TypeFilter();
+                case "noOfTetrads":
+                    return new NoTetradsFilter();
+                case "gtractSeq":
+                    return null;
+                case "loopLen":
                     return new LoopLengthFilter();
-                case "V-Loops":
+                case "bulges":
+                    return new BulgesFilter();
+                case "vLoops":
                     return new V_LoopsFilter();
+                case "webbaDaSilva":
+                    return null;
+                case "onzClass":
+                    return new ONZFilter();
                 default:
                     return null;
             }
