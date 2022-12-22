@@ -33,11 +33,11 @@ export class SearchComponent {
 
   collectRowElements(conds: RowAttrPckt) {
     this.httpSearchData.push(conds);
-    /*if (this.httpSearchData.length === )*/
-      //this.getResults();
+    if (this.httpSearchData.length === this.dataSource.length)
+      this.getResult()
   }
 
-  getResults() {
+  getResult() {
     this.http.post('http://localhost:5000/api/Search/PostAndGetResults',
       this.httpSearchData)
       .subscribe(data => console.log(JSON.stringify(data)));
