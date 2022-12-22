@@ -1,6 +1,6 @@
 <div id="parentRow">
   <div class="conditionsElem">
-    <ng-container *ngFor="let cond of rowData.value">
+    <ng-container *ngFor="let cond of rowData.conditions">
       <app-cond-clickable-cell [ID]="rowAttrID" [condData]="cond" [eventReceiver]="msg" (clicked)="respondClickEvent($event)"></app-cond-clickable-cell>
     </ng-container>
   </div>
