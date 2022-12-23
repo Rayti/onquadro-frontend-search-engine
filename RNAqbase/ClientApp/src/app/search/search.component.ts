@@ -33,8 +33,9 @@ export class SearchComponent {
 
   collectRowElements(conds: RowAttrPckt) {
     this.httpSearchData.push(conds);
-    if (this.httpSearchData.length === this.dataSource.length)
-      this.getResult()
+    if (this.httpSearchData.length === this.dataSource.length) {
+      this.getResult();
+    }
   }
 
   getResult() {
