@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Condition } from '../condition';
 import { RowAttrPckt } from '../row-attr-pckt';
 import { RowElements } from '../row-elements';
+import { SnackbarDuplicateCondComponent } from '../snackbar-duplicate-cond/snackbar-duplicate-cond.component';
 
 @Component({
   selector: 'app-row-cond-addable',
@@ -20,6 +22,8 @@ export class RowCondAddableComponent implements OnInit {
   @Output() searchResponse = new EventEmitter<RowAttrPckt>();
   disableAddButton: boolean;
 
+  constructor(private snackBar: MatSnackBar) { }
+
   ngOnInit() {
     this.resetEvent.subscribe(() => {
       this.handleResetReq();
@@ -35,7 +39,7 @@ export class RowCondAddableComponent implements OnInit {
     if (!this.rowData.conditions.some(element => JSON.stringify(element).toLowerCase() == JSON.stringify(cond).toLowerCase()))
       this.rowData.conditions.push(cond);
     else
-      alert("Condition already exists!");
+      this.openSnackBar();
     this.checkCondCount();
   }
 
@@ -60,5 +64,10 @@ export class RowCondAddableComponent implements OnInit {
   handleSearchReq() {
     this.searchResponse.emit({ attrID: this.rowAttrID, conditions: this.rowElements.conditions });
   }
-}
 
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackbarDuplicateCondComponent, {
+      duration: 1000,
+    });
+  }
+}

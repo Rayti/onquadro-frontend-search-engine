@@ -51,6 +51,7 @@ import { WebbaDaSilvaDialogComponent } from './webba-da-silva-dialog/webba-da-si
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { SnackbarDuplicateCondComponent } from './snackbar-duplicate-cond/snackbar-duplicate-cond.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -133,7 +134,8 @@ import { SnackbarDuplicateCondComponent } from './snackbar-duplicate-cond/snackb
     PinchZoomModule,
     CounterModule.forRoot(),
     MatTabsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -142,7 +144,8 @@ import { SnackbarDuplicateCondComponent } from './snackbar-duplicate-cond/snackb
     Visualization3DComponent,
     WebbaDaSilvaDialogComponent,
     ValueDialogComponent,
-    ValOperDialogComponent
+    ValOperDialogComponent,
+    SnackbarDuplicateCondComponent
   ]
 })
 
