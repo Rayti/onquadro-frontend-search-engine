@@ -42,5 +42,6 @@ export class SearchComponent {
     this.http.post('http://localhost:5000/api/Search/PostAndGetResults',
       this.httpSearchData)
       .subscribe(data => console.log(JSON.stringify(data)));
+    this.httpSearchData.splice(0);
   }
 }
