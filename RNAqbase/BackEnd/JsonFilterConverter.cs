@@ -17,25 +17,25 @@ namespace RNAqbase.BackEnd
                 case "pdbID":
                     return new PDBIDFilter();
                 case "authorName":
-                    return null;
+                    return new DummyFilter();
                 case "pdbDeposition":
                     return new PDBDepositionFilter();
                 case "keyword":
-                    return null;
+                    return new DummyFilter();
                 case "expMethod":
                     return new ExperimentalMethodFilter();
                 case "molType":
                     return new MoleculeTypeFilter();
                 case "sequence":
-                    return null;
+                    return new DummyFilter();
                 case "ions":
-                    return null;
+                    return new DummyFilter();
                 case "typeNoStrands":
                     return new TypeFilter();
                 case "noOfTetrads":
                     return new NoTetradsFilter();
                 case "gtractSeq":
-                    return null;
+                    return new DummyFilter();
                 case "loopLen":
                     return new LoopLengthFilter();
                 case "bulges":
@@ -43,11 +43,11 @@ namespace RNAqbase.BackEnd
                 case "vLoops":
                     return new V_LoopsFilter();
                 case "webbaDaSilva":
-                    return null;
+                    return new DummyFilter();
                 case "onzClass":
                     return new ONZFilter();
                 default:
-                    return null;
+                    return new DummyFilter();
             }
         }
 
