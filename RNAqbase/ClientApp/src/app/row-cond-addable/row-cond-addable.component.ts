@@ -67,7 +67,7 @@ export class RowCondAddableComponent implements OnInit {
 
   openSnackBar() {
     this.snackBar.openFromComponent(SnackbarDuplicateCondComponent, {
-      duration: 1000,
+      duration: 2000,
     });
   }
 }
