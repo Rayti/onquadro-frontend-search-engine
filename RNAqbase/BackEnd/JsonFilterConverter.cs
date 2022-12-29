@@ -17,7 +17,7 @@ namespace RNAqbase.BackEnd
                 case "pdbID":
                     return new PDBIDFilter();
                 case "authorName":
-                    return new DummyFilter();
+                    return new AuthorFilter();
                 case "pdbDeposition":
                     return new PDBDepositionFilter();
                 case "keyword":
@@ -43,7 +43,7 @@ namespace RNAqbase.BackEnd
                 case "vLoops":
                     return new V_LoopsFilter();
                 case "webbaDaSilva":
-                    return new DummyFilter();
+                    return new WebbaDaSilvaFilter();
                 case "onzClass":
                     return new ONZFilter();
                 default:
