@@ -34,7 +34,7 @@ export class CondClickableCellComponent {
         if (pckt.eventReceiver == this.condData.value) {
           this.isClicked = true;
         }
-        else if (pckt.eventReceiver != this.condData.condition) {
+        else if (pckt.eventReceiver != this.condData.value) {
           this.isClicked = false;
         }
       }
