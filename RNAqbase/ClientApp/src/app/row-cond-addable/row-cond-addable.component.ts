@@ -18,6 +18,7 @@ export class RowCondAddableComponent implements OnInit {
   @Input() resetEvent: EventEmitter<any>;
   @Input() searchEvent: EventEmitter<any>;
   @Output() searchResponse = new EventEmitter<RowAttrPckt>();
+
   disableAddButton: boolean;
 
   ngOnInit() {
