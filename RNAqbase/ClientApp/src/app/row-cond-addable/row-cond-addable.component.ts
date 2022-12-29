@@ -55,7 +55,7 @@ export class RowCondAddableComponent implements OnInit {
     else
       this.disableAddButton = false;
   }
-
+  
   handleResetReq() {
     this.rowData.conditions.splice(0);
     this.checkCondCount();
