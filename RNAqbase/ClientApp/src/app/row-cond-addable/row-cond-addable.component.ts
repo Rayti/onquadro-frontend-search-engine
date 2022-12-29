@@ -65,11 +65,6 @@ export class RowCondAddableComponent implements OnInit {
   handleSearchReq() {
     this.searchResponse.emit({ attrID: this.rowAttrID, conditions: this.rowElements.conditions });
   }
-}
-
-  handleSearchReq() {
-    this.searchResponse.emit({ attrID: this.rowAttrID, conditions: this.rowElements.conditions });
-  }
 
   openSnackBar() {
     this.snackBar.openFromComponent(SnackbarDuplicateCondComponent, {
