@@ -1,11 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {ChartDataSets} from "chart.js";
-import {Color} from "ng2-charts";
-import { ChartType } from 'chart.js';
-import { MultiDataSet, Label } from 'ng2-charts';
+import { MatDialog } from '@angular/material/dialog';
 import { Params } from '@angular/router';
 
 @Component({
