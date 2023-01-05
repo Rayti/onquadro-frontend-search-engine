@@ -3,6 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatSelectChange } from "@angular/material/select";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'quadruplex-table',
@@ -33,27 +34,44 @@ export class QuadruplexTableComponent implements OnInit {
   ]
   value: any;
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.http.get<Quadruplex[]>(this.baseUrl + 'api/Quadruplex/GetQuadruplexes').subscribe(result => {
-        this.csvData = JSON.parse(JSON.stringify(result));
-        for (let val of this.csvData) {
-          val.id = 'Q' + val.id;
-          val.sequence = this.truncate(val.sequence);
+    this.route.queryParamMap.subscribe(params => {
+      if (params.has('r')) {
+        if (params.get('r') === 'search') {
+          this.http.get<Quadruplex[]>(this.baseUrl + 'api/Search/GetResults').subscribe(result => {
+            this.csvData = JSON.parse(JSON.stringify(result));
+            console.log(this.csvData);
+          },
+            error => console.error(error));
         }
-        this.dataSource = new MatTableDataSource(result);
-        for (let val of result) {
-          val.quadruplex_id = 'Q' + val.id;
-          val.sequence = this.truncate(val.sequence);
-        }
-        this.dataSource.filterPredicate = (data: Quadruplex, filter: string) => !filter || (data.pdbId != null && data.pdbId.toString().toUpperCase().includes(filter.toUpperCase()));
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.areButtonsHidden = false;
-        this.filteredDataLength = this.dataSource.data.length;
-      },
+      }
+      else {
+        this.http.get<Quadruplex[]>(this.baseUrl + 'api/Search/GetResults').subscribe(result => {
+          this.csvData = JSON.parse(JSON.stringify(result));
+        },
+          error => console.error(error));
+      }
+    });
+    this.http.get<Quadruplex[]>(this.baseUrl + 'api/Search/GetResults').subscribe(result => {
+      this.csvData = JSON.parse(JSON.stringify(result));
+      for (let val of this.csvData) {
+        val.id = 'Q' + val.id;
+        val.sequence = this.truncate(val.sequence);
+      }
+      this.dataSource = new MatTableDataSource(result);
+      for (let val of result) {
+        val.quadruplex_id = 'Q' + val.id;
+        val.sequence = this.truncate(val.sequence);
+      }
+      this.dataSource.filterPredicate = (data: Quadruplex, filter: string) => !filter || (data.pdbId != null && data.pdbId.toString().toUpperCase().includes(filter.toUpperCase()));
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.areButtonsHidden = false;
+      this.filteredDataLength = this.dataSource.data.length;
+    },
       error => console.error(error));
   }
 
