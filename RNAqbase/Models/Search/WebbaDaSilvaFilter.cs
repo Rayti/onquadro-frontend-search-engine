@@ -5,29 +5,28 @@ using System.Threading.Tasks;
 
 namespace RNAqbase.Models.Search
 {
-    public class NoTetradsFilter : Filter
+    public class WebbaDaSilvaFilter : Filter
     {
-        public NoTetradsFilter()
+        public WebbaDaSilvaFilter()
         {
-            FieldInSQL = "COUNT(DISTINCT(t.id))";
-            joinType = JoinType.Having;
+            FieldInSQL = "loop_progression";
         }
+
         public override List<Condition> Conditions { get; set; } = new List<Condition>();
 
         public override string JoinConditions()
         {
-            if (Conditions.Count == 0)
+            if (Conditions.Count == 0 || Conditions.Where(x => x.Value == "any").ToList().Any())
             {
                 return "";
             }
-
             string query = "(";
             for (int i = 0; i < Conditions.Count; i++)
             {
-                query += $"({FieldInSQL} {Conditions[i].Operator} {Conditions[i].Value})";
+                query += $"({FieldInSQL} LIKE '{Conditions[i].Value}%')";
                 if (i != Conditions.Count - 1)
                 {
-                    query += " AND ";
+                    query += " OR ";
                 }
             }
 

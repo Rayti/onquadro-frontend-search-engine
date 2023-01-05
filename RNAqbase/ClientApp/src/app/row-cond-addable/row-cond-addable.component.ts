@@ -20,6 +20,7 @@ export class RowCondAddableComponent implements OnInit {
   @Input() resetEvent: EventEmitter<any>;
   @Input() searchEvent: EventEmitter<any>;
   @Output() searchResponse = new EventEmitter<RowAttrPckt>();
+
   disableAddButton: boolean;
 
   constructor(private snackBar: MatSnackBar) { }
@@ -55,7 +56,7 @@ export class RowCondAddableComponent implements OnInit {
     else
       this.disableAddButton = false;
   }
-
+  
   handleResetReq() {
     this.rowData.conditions.splice(0);
     this.checkCondCount();

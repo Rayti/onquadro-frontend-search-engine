@@ -17,7 +17,7 @@ namespace RNAqbase.BackEnd
                 case "pdbID":
                     return new PDBIDFilter();
                 case "authorName":
-                    return new DummyFilter();
+                    return new AuthorFilter();
                 case "pdbDeposition":
                     return new PDBDepositionFilter();
                 case "keyword":
@@ -34,6 +34,8 @@ namespace RNAqbase.BackEnd
                     return new TypeFilter();
                 case "noOfTetrads":
                     return new NoTetradsFilter();
+                case "Ions":
+                    return new IonsFilter();
                 case "gtractSeq":
                     return new DummyFilter();
                 case "loopLen":
@@ -43,7 +45,7 @@ namespace RNAqbase.BackEnd
                 case "vLoops":
                     return new V_LoopsFilter();
                 case "webbaDaSilva":
-                    return new DummyFilter();
+                    return new WebbaDaSilvaFilter();
                 case "onzClass":
                     return new ONZFilter();
                 default:
