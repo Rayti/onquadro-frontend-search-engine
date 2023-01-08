@@ -5,27 +5,25 @@ using System.Threading.Tasks;
 
 namespace RNAqbase.Models.Search
 {
-    public class PDBIDFilter : Filter
+    public class WebbaDaSilvaFilter : Filter
     {
-        public PDBIDFilter()
+        public WebbaDaSilvaFilter()
         {
-            FieldInSQL = "p.identifier";
+            FieldInSQL = "loop_progression";
         }
 
         public override List<Condition> Conditions { get; set; } = new List<Condition>();
 
         public override string JoinConditions()
         {
-            if (Conditions.Count == 0)
+            if (Conditions.Count == 0 || Conditions.Where(x => x.Value == "any").ToList().Any())
             {
                 return "";
             }
             string query = "(";
             for (int i = 0; i < Conditions.Count; i++)
             {
-                query += $"({FieldInSQL} ~* @{ParameterDictionary.Count})";
-                ParameterDictionary.Add($"{ParameterDictionary.Count}", $"^{Conditions[i].Value}");
-
+                query += $"({FieldInSQL} LIKE '{Conditions[i].Value}%')";
                 if (i != Conditions.Count - 1)
                 {
                     query += " OR ";
